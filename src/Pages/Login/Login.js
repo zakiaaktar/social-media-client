@@ -15,13 +15,30 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+
+
+
+    login(email, password)
+    .then(result => {
+        const user = result.user;
+        //console.log(user.email);
+
+
+        const currentUser = {
+            email: user.email
+        }
+
+        console.log(currentUser);
+      })
+
   }
 
 
 
   return (
     <div>
-      <div className="hero min-h-screen">
+      <div className="hero min-h-screen -my-16">
         <div className="hero-content flex-col">
 
 

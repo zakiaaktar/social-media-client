@@ -2,24 +2,27 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 //import { FaBeer } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
+
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
 
 
     const handleLogOut = () => {
-        
-            
+
+
     }
 
 
 
     const menuItems = <>
         <li className='text-white font-semibold'><Link to='/'>Home</Link></li>
-        <li className='text-white font-semibold'><Link to='/'>Media</Link></li>
+        
         <li className='text-white font-semibold'><Link to='/message'>Message</Link></li>
+        <li className='text-white font-semibold'><Link to='/media'>Media</Link></li>
         <li className='text-white font-semibold'><Link to='/about'>About</Link></li>
-       
+
 
         {/* {
             user?.email ?
@@ -33,6 +36,9 @@ const Navbar = () => {
                 <li className='text-white font-semibold'><Link to='/login'>Login</Link></li>
         } */}
 
+        <div className='mt-4'>
+        <FaUser size={20} color="white"/>
+        </div>
 
         <li className='text-white font-semibold'><Link to='/'>{user?.displayName}</Link></li>
         <li className='text-white font-semibold'><Link to='/login'>Login</Link></li>

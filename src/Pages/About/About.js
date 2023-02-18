@@ -1,4 +1,6 @@
 import React from 'react';
+import EditModal from './EditModal';
+
 
 
 
@@ -16,14 +18,17 @@ const About = () => {
 
     return (
         <>
-            <div className="btn bg-gradient-to-br from-blue-900 to-purple-500 rounded-none">
-                <button>Edit Profile</button>
+            <div>
+                {/* <button>Edit Profile</button> */}
+                <label htmlFor="edit-modal" className="btn bg-gradient-to-br from-blue-900 to-purple-500 rounded-none">Edit About Section</label>
             </div>
             <div>
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col">
                         <div className="text-center lg:text-left">
+                            <div className='-my-32'>
                             <h1 className="text-5xl font-bold">About Section!!</h1>
+                            </div>
                         </div>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                             <form onSubmit={handleEdit} className="card-body">
@@ -61,6 +66,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            <EditModal></EditModal>
 
 
         </>

@@ -4,6 +4,8 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 //import { FaBeer } from "@react-icons/all-files/fa/FaBeer";
 import { AiFillLike } from 'react-icons/ai';
 import { FiHeart } from 'react-icons/fi';
+import { FaUser } from 'react-icons/fa';
+
 
 
 
@@ -24,16 +26,44 @@ const Posts = () => {
         const form = event.target;
         const message = form.message.value;
         console.log(message);
+
+
+
+        const order = {
+            message
+        }
+
+
+
+        fetch('http://localhost:4000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    alert('Post successfully')
+                    form.reset();
+                }
+            })
+            .catch(er => console.error(er));
     }
+
 
 
 
     return (
         <div className='mx auto h-screen'>
-            <div className='flex'>
+            <div className='flex mx-96'>
                 {/* <div>
                     <img style={{ height: '40px' }} src={user.photoURL} alt="" />
                 </div> */}
+                <FaUser  size={20} color="#000" />
+
                 <h2>{user?.displayName}</h2>
 
             </div>
@@ -44,11 +74,11 @@ const Posts = () => {
                     {/* <FaBeer /> */}
                     <div className='flex justify-evenly'>
                         <button onClick={() => setLikeCount(likeCount + 1)}>
-                            <AiFillLike size={32} color="sky"/>
+                            <AiFillLike size={32} color="sky" />
                             <span>{likeCount}</span>
                         </button>
                         <button onClick={() => setLoveCount(loveCount + 1)}>
-                            <FiHeart size={32} color="red"/>
+                            <FiHeart size={32} color="red" />
                             <span>{loveCount}</span>
                         </button>
 
@@ -57,7 +87,7 @@ const Posts = () => {
                     </div>
                 </div>
                 <div className='text-center mt-6'>
-                    <input className='btn bg-gradient-to-br from-blue-900 to-purple-500 rounded-none mt-3 w-1/2' type="submit" value="Post" />
+                    <input className='btn bg-gradient-to-br from-blue-900 to-purple-500 rounded-none mt-3 w-1/2' type="submit" value="Submit" />
                 </div>
             </form>
 
